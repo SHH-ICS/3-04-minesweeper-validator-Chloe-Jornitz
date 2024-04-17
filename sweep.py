@@ -5,8 +5,14 @@
 def validate( block_data ):
   # Check whether the centre block is a bomb, a number, or an invalid input
   # Skip bombs, send an error on invalid input, verify numbers
-
-  return
+  bomb_count = 0
+  for i in range (3):
+    for j in range (3):
+      if i != 1 and j!=1:
+        if block_data [i][j] == -1:
+          bomb_count = bomb_count + 1
+  
+  return bomb_count
 
 
 grid = [
