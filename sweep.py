@@ -5,9 +5,9 @@
 def validate( block_data ):
   bomb_count = 0
   result = ""
+  while (1):
   # Check whether the centre block is a bomb, a number, or an invalid input
   # Skip bombs, send an error on invalid input, verify numbers
-  while (1):
     if block_data [1][1] == -1:
         result = "This block is a bomb."
         break
@@ -16,18 +16,21 @@ def validate( block_data ):
         if block_data [i][j] == -1:
           bomb_count = bomb_count + 1
     if block_data [1][1] == bomb_count:
-      if block_data [1][1] == 1:
-        result = 'Valid. There is '+ str(bomb_count)+' bomb around this block.'
-      if block_data [1][1] != 1:
-        result = 'Valid. There are '+ str(bomb_count)+' bombs around this block.'
+      if bomb_count == 1:
+        result = 'Valid. There is ' + str(bomb_count) + ' bomb around this block. The number in this block is ' + str(block_data[1][1]) + '. The number in the block is equal to the number of surrounding bombs.'
+        break
+      if bomb_count != 1:
+        result = 'Valid. There are '+ str(bomb_count)+' bombs around this block. The number in this block is ' + str(block_data[1][1]) + '. The number in the block is equal to the number of surrounding bombs.'
+        break
     if block_data [1][1] != bomb_count:
-      result = 'Invalid. There are '+ str(bomb_count)+' bombs around this block.'
+      result = 'Invalid. There are '+ str(bomb_count)+' bombs around this block. The number in this block is ' + str(block_data[1][1]) + '. The number in the block is not equal to the number of surrounding bombs.'
+      break
   return result
 
-
 grid = [
-  [-1,1,0],
-  [-1,-1,0],
-  [0,0,0]
+  [1,1,1],
+  [1,3,0],
+  [-1,0,1]
 ]
+  
 print (validate(grid))
