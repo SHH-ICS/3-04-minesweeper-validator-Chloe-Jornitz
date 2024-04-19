@@ -33,12 +33,13 @@ try:
     return result
 
   grid = [
-    [1,o,-1],
-    [1,1,0],
-    [-1,0,1]
+    [0,1,-1],
+    [1,2,1],
+    [-1,1,0]
   ]
     
   print (validate(grid))
+
 except:
   print ("Error!")
   print ("The value in this block, or in any surrounding blocks is not a number. Please fill the grid with only numbers.")
